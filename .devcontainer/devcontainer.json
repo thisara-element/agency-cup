@@ -1,0 +1,32 @@
+{
+  // GitHub Codespaces (or VS Code "Reopen in Container"): the whole kit, ready in the browser, nothing to install.
+  "name": "Agency Cup",
+  "build": { "dockerfile": "Dockerfile" },
+  "containerEnv": {
+    "UV_LINK_MODE": "copy"
+  },
+  // Runs once when the codespace is created: uv sync, then .env from your Codespaces secrets.
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  // Set these before you create the codespace and .env is filled in for you. Or paste them into .env later.
+  "secrets": {
+    "TEAM_KEY": {
+      "description": "Your team key (ac_...), shown once when you register your team on the game website."
+    },
+    "NVIDIA_API_KEY": {
+      "description": "Your free NVIDIA key (nvapi-...).",
+      "documentationUrl": "https://build.nvidia.com"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["start_here.ipynb"]
+    },
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvironment": true
+      }
+    }
+  }
+}
